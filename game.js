@@ -1,104 +1,65 @@
-// Set up Three.js scene
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById("game-container").appendChild(renderer.domElement);
+const chatBox = document.getElementById("chat-box");
+const userInput = document.getElementById("user-input");
+const sendButton = document.getElementById("send-button");
 
-// Add Earth background
-const earthTexture = new THREE.TextureLoader().load(
-    "https://cdn.jsdelivr.net/gh/plotly/datasets@master/earth-surface.jpg"
-);
-const earthGeometry = new THREE.SphereGeometry(50, 64, 64);
-const earthMaterial = new THREE.MeshBasicMaterial({ map: earthTexture });
-const earth = new THREE.Mesh(earthGeometry, earthMaterial);
-earth.position.z = -100; // Place Earth far in the background
-scene.add(earth);
+// Function to create a new message in the chat box
+function addMessage(text, isBot = false) {
+    const message = document.createElement("div");
+    message.classList.add("message");
+    message.classList.add(isBot ? "bot-message" : "user-message");
+    message.textContent = text;
+    chatBox.appendChild(message);
+    chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the latest message
+}
 
-// Create airplane
-const airplaneGeometry = new THREE.BoxGeometry(1, 0.5, 0.5);
-const airplaneMaterial = new THREE.MeshBasicMaterial({ color: 0xff4500 });
-const airplane = new THREE.Mesh(airplaneGeometry, airplaneMaterial);
-airplane.position.z = 0;
-scene.add(airplane);
+// Function to handle user input and bot response
+async function handleUserInput() {
+    const userMessage = userInput.value.trim();
+    if (!userMessage) return;
 
-// Create obstacle
-const obstacleGeometry = new THREE.BoxGeometry(1, Math.random() * 4 + 1, 0.5);
-const obstacleMaterial = new THREE.MeshBasicMaterial({ color: 0x228b22 });
-const obstacle = new THREE.Mesh(obstacleGeometry, obstacleMaterial);
-obstacle.position.set(10, Math.random() * 4 - 2, 0);
-scene.add(obstacle);
+    // Add user's message to the chat
+    addMessage(userMessage, false);
+    userInput.value = ""; // Clear input field
 
-// Add lighting
-const light = new THREE.AmbientLight(0xffffff, 0.5);
-scene.add(light);
+    // Show "Typing..." indicator
+    addMessage("Typing...", true);
 
-// Set camera position
-camera.position.z = 5;
+    try {
+        const response = await fetchAIResponse(userMessage);
+        // Replace the "Typing..." message with AI's response
+        chatBox.lastChild.textContent = response;
+    } catch (error) {
+        chatBox.lastChild.textContent = "Sorry, something went wrong. Please try again.";
+    }
+}
 
-// Variables for movement and score
-let speed = 0.05;
-let airplaneY = 0;
-let isGameOver = false;
-let score = 0;
+// Function to fetch AI response using OpenAI API
+async function fetchAIResponse(userMessage) {
+    const apiKey = "YOUR_OPENAI_API_KEY"; // Replace with your OpenAI API key
+    const endpoint = "https://api.openai.com/v1/chat/completions";
 
-// Mobile controls
-const upButton = document.getElementById("up-button");
-const downButton = document.getElementById("down-button");
+    const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+            model: "gpt-3.5-turbo", // Adjust model if needed
+            messages: [{ role: "user", content: userMessage }],
+        }),
+    });
 
-upButton.addEventListener("mousedown", () => (airplaneY += 0.2));
-downButton.addEventListener("mousedown", () => (airplaneY -= 0.2));
+    if (!response.ok) {
+        throw new Error("Failed to fetch AI response");
+    }
 
-// Keyboard controls
-document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowUp") airplaneY += 0.2;
-    if (e.key === "ArrowDown") airplaneY -= 0.2;
+    const data = await response.json();
+    return data.choices[0].message.content;
+}
+
+// Event listeners
+sendButton.addEventListener("click", handleUserInput);
+userInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") handleUserInput();
 });
-
-// Collision detection
-function checkCollision() {
-    const dx = Math.abs(airplane.position.x - obstacle.position.x);
-    const dy = Math.abs(airplane.position.y - obstacle.position.y);
-
-    if (dx < 1 && dy < 1) {
-        alert(`Game Over! Your score: ${score}`);
-        isGameOver = true;
-        window.location.reload();
-    }
-}
-
-// Rotate Earth
-function rotateEarth() {
-    earth.rotation.y += 0.001;
-}
-
-// Game loop
-function animate() {
-    if (isGameOver) return;
-
-    // Move airplane
-    airplane.position.y = airplaneY;
-
-    // Move obstacle
-    obstacle.position.x -= speed;
-    if (obstacle.position.x < -10) {
-        obstacle.position.x = 10;
-        obstacle.position.y = Math.random() * 4 - 2;
-        score++;
-        speed += 0.01; // Increase speed over time
-    }
-
-    // Rotate Earth
-    rotateEarth();
-
-    // Check collision
-    checkCollision();
-
-    // Render scene
-    renderer.render(scene, camera);
-
-    requestAnimationFrame(animate);
-}
-
-// Start game
-animate();
