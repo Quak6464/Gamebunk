@@ -7,20 +7,33 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
+    <header class="sticky-header">
         <h1>Welcome to Game Hub!</h1>
-        <p>Click on a game to start playing.</p>
+        <nav class="hotbar">
+            <button onclick="scrollToGames()">Browse Games</button>
+            <a href="#contact" class="hotbar-icon">Contact Us</a>
+            <a href="#about" class="hotbar-icon">About</a>
+        </nav>
     </header>
     <main>
-        <div class="game-list">
+        <section id="games" class="game-list">
             <a href="games/tictactoe.html" class="game-card">Tic Tac Toe</a>
             <a href="games/snake.html" class="game-card">Snake</a>
             <a href="games/rockpaperscissors.html" class="game-card">Rock Paper Scissors</a>
             <!-- Add more games here -->
-        </div>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: support@gamehub.com</p>
+        </section>
+        <section id="about">
+            <h2>About Game Hub</h2>
+            <p>Game Hub is your ultimate platform for fun and engaging browser-based games!</p>
+        </section>
     </main>
     <footer>
         <p>© 2024 Game Hub</p>
     </footer>
+    <script src="scripts.js"></script>
 </body>
 </html>
