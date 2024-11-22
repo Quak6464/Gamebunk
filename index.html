@@ -4,119 +4,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Game Hub</title>
-  <meta name="description" content="Find and play online games easily.">
-
-  <!-- Google Fonts -->
+  <title>Unigine Squad</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Custom CSS -->
   <style>
+    /* General Reset */
     body {
-      font-family: 'Oxanium', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #121212;
-      color: #ffffff;
+      font-family: 'Oxanium', sans-serif;
+      background-color: #0a0a1a;
+      color: #fff;
     }
 
     header {
-      background-color: #1f1f1f;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 2rem;
-      margin: 0;
-    }
-
-    main {
-      padding: 2rem;
-    }
-
-    .game-list {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #111133;
     }
 
-    .game-card {
-      background-color: #282828;
-      border-radius: 8px;
-      width: 200px;
-      padding: 1rem;
+    header img {
+      height: 50px;
+    }
+
+    .menu-icon {
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .hero {
       text-align: center;
+      padding: 3rem 1rem;
     }
 
-    .game-card img {
-      max-width: 100%;
-      border-radius: 4px;
-    }
-
-    .game-card h3 {
-      font-size: 1.2rem;
+    .hero h1 {
+      font-size: 2.5rem;
       margin: 0.5rem 0;
     }
 
-    .game-card a {
-      display: inline-block;
-      margin-top: 0.5rem;
-      color: #00b4d8;
-      text-decoration: none;
+    .hero p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0 2rem 0;
     }
 
-    footer {
-      background-color: #1f1f1f;
-      padding: 1rem;
-      text-align: center;
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      background: linear-gradient(90deg, #0066ff, #a700ff);
+      border: none;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #a700ff, #0066ff);
+      transform: scale(1.05);
+    }
+
+    .game-images {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
       margin-top: 2rem;
     }
 
-    footer p {
-      margin: 0;
+    .game-images img {
+      height: 200px;
+      border-radius: 10px;
     }
   </style>
 </head>
 
 <body>
-
-  <!-- Header -->
   <header>
-    <h1>Online Game Hub</h1>
+    <img src="logo-placeholder.png" alt="Unigine Squad Logo">
+    <div class="menu-icon">&#9776;</div>
   </header>
 
-  <!-- Main Content -->
-  <main>
-    <h2>Games to Play Online</h2>
-    <div class="game-list">
-      <!-- Example Game Card -->
-      <div class="game-card">
-        <img src="game1-image.jpg" alt="Game 1">
-        <h3>Game 1</h3>
-        <a href="https://example.com/game1" target="_blank">Play Now</a>
-      </div>
-      <div class="game-card">
-        <img src="game2-image.jpg" alt="Game 2">
-        <h3>Game 2</h3>
-        <a href="https://example.com/game2" target="_blank">Play Now</a>
-      </div>
-      <div class="game-card">
-        <img src="game3-image.jpg" alt="Game 3">
-        <h3>Game 3</h3>
-        <a href="https://example.com/game3" target="_blank">Play Now</a>
-      </div>
+  <div class="hero">
+    <h1>Epic Games Made For True Gamers!</h1>
+    <p>Enjoy the Games</p>
+    <a href="#" class="btn">Join With Us</a>
+    <div class="game-images">
+      <img src="game1-placeholder.jpg" alt="Game 1">
+      <img src="game2-placeholder.jpg" alt="Game 2">
+      <img src="game3-placeholder.jpg" alt="Game 3">
     </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2024 Online Game Hub. All Rights Reserved.</p>
-  </footer>
-
+  </div>
 </body>
 
 </html>
