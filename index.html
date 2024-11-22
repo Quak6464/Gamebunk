@@ -1,169 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- Meta Tags -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/imgs/inaya_pfp.gif">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Game Hub</title>
+  <meta name="description" content="Find and play online games easily.">
 
-    <!-- Title -->
-    <title>🌴 ・ Game Bunk</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Oxanium', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #ffffff;
+    }
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous">
-    <style>
-        /* Global Styles */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #121212; /* Dark background */
-            color: #ffffff; /* Light text for contrast */
-        }
+    header {
+      background-color: #1f1f1f;
+      padding: 1rem;
+      text-align: center;
+    }
 
-        /* Sticky Navigation */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: #1e1e1e; /* Slightly lighter for distinction */
-            padding: 1rem 2rem;
-            border-bottom: 2px solid #333;
-        }
+    header h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
 
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    main {
+      padding: 2rem;
+    }
 
-        .header_logo img {
-            max-height: 50px;
-            transition: transform 0.3s ease;
-        }
+    .game-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
 
-        .header_logo img:hover {
-            transform: scale(1.1); /* Slight zoom on hover */
-        }
+    .game-card {
+      background-color: #282828;
+      border-radius: 8px;
+      width: 200px;
+      padding: 1rem;
+      text-align: center;
+    }
 
-        .nav_links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            gap: 1.5rem;
-        }
+    .game-card img {
+      max-width: 100%;
+      border-radius: 4px;
+    }
 
-        .nav_links a {
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: bold;
-            padding: 0.5rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
+    .game-card h3 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
 
-        .nav_links a:hover {
-            color: #ffcc00; /* Highlight color */
-            transform: scale(1.1); /* Slight zoom effect */
-        }
+    .game-card a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #00b4d8;
+      text-decoration: none;
+    }
 
-        main {
-            padding: 2rem;
-        }
+    footer {
+      background-color: #1f1f1f;
+      padding: 1rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
 
-        section {
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s forwards;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .intro_section, .about_section, .contact_section, .games_section {
-            background-color: #1e1e1e; /* Box background */
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            color: #ffffff; /* White text */
-        }
-
-        .intro_section h1,
-        .about_section h2,
-        .contact_section h2,
-        .games_section h2 {
-            color: #00aaff; /* Accent color for headings */
-        }
-
-        footer {
-            background-color: #1e1e1e;
-            color: #ffffff;
-            text-align: center;
-            padding: 1rem 0;
-        }
-
-        footer a {
-            color: #00aaff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Bright link styles for games section */
-        .games_section a {
-            color: #00aaff; /* Bright blue color for links */
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .games_section a:hover {
-            color: #ffcc00; /* Bright yellow for hover effect */
-            transform: scale(1.1);
-        }
-
-        /* Add spacing between links */
-        .games_section ul li {
-            margin-bottom: 10px; /* Adds space between each link */
-        }
-    </style>
+    footer p {
+      margin: 0;
+    }
+  </style>
 </head>
-<body>
-    <!-- Header Section -->
-    <header>
-        <nav>
-            <div class="header_logo">
-                <img src="assets/imgs/bilota.png" alt="Bilota Logo">
-            </div>
-            <ul class="nav_links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="game.html">Games</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Main Content Section -->
-    <main>
-        <section id="about" class="about_section">
-            <h2>About Us</h2>
-            <p>Game Bunk is a space where you can get online free-to-play games that you can run on your school PC without any issues.</p>
-        </section>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Online Game Hub</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h2>Games to Play Online</h2>
+    <div class="game-list">
+      <!-- Example Game Card -->
+      <div class="game-card">
+        <img src="game1-image.jpg" alt="Game 1">
+        <h3>Game 1</h3>
+        <a href="https://example.com/game1" target="_blank">Play Now</a>
+      </div>
+      <div class="game-card">
+        <img src="game2-image.jpg" alt="Game 2">
+        <h3>Game 2</h3>
+        <a href="https://example.com/game2" target="_blank">Play Now</a>
+      </div>
+      <div class="game-card">
+        <img src="game3-image.jpg" alt="Game 3">
+        <h3>Game 3</h3>
+        <a href="https://example.com/game3" target="_blank">Play Now</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Online Game Hub. All Rights Reserved.</p>
+  </footer>
+
 </body>
+
 </html>
