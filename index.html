@@ -1,103 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unigine Squad</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    /* General Reset */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Oxanium', sans-serif;
-      background-color: #0a0a1a;
-      color: #fff;
-    }
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/imgs/inaya_pfp.gif">
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #111133;
-    }
+    <!-- Title -->
+    <title>🌴 ・ Bilota</title>
 
-    header img {
-      height: 50px;
-    }
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600&display=swap" rel="stylesheet">
 
-    .menu-icon {
-      font-size: 1.5rem;
-      color: #fff;
-      cursor: pointer;
-    }
+    <!-- Stylesheet -->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Oxanium', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a1a; /* Dark gaming background */
+            color: #ffffff; /* Light text for contrast */
+        }
 
-    .hero {
-      text-align: center;
-      padding: 3rem 1rem;
-    }
+        /* Sticky Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #121212; /* Darker navigation bar */
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .hero h1 {
-      font-size: 2.5rem;
-      margin: 0.5rem 0;
-    }
+        .header_logo img {
+            max-height: 50px;
+        }
 
-    .hero p {
-      font-size: 1.2rem;
-      margin: 0.5rem 0 2rem 0;
-    }
+        .nav_links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
 
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      font-size: 1rem;
-      background: linear-gradient(90deg, #0066ff, #a700ff);
-      border: none;
-      color: white;
-      text-decoration: none;
-      border-radius: 25px;
-      transition: 0.3s;
-    }
+        .nav_links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 0.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
 
-    .btn:hover {
-      background: linear-gradient(90deg, #a700ff, #0066ff);
-      transform: scale(1.05);
-    }
+        .nav_links a:hover {
+            color: #00ffcc; /* Vibrant hover color */
+            transform: scale(1.1);
+        }
 
-    .game-images {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
+        main {
+            padding: 2rem;
+        }
 
-    .game-images img {
-      height: 200px;
-      border-radius: 10px;
-    }
-  </style>
+        section {
+            margin-bottom: 2rem;
+            background-color: #1e1e2f; /* Slightly lighter for sections */
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 255, 204, 0.5);
+        }
+
+        section h2 {
+            color: #00ccff; /* Bright section headings */
+        }
+
+        /* Games Section Links */
+        .games_section a {
+            color: #00ffcc; /* Bright blue for game links */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .games_section a:hover {
+            color: #ffcc00; /* Bright yellow on hover */
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-
 <body>
-  <header>
-    <img src="logo-placeholder.png" alt="Unigine Squad Logo">
-    <div class="menu-icon">&#9776;</div>
-  </header>
+    <!-- Header Section -->
+    <header>
+        <div class="header_logo">
+            <img src="assets/imgs/bilota.png" alt="Bilota Logo">
+        </div>
+        <ul class="nav_links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+        </ul>
+    </header>
 
-  <div class="hero">
-    <h1>Epic Games Made For True Gamers!</h1>
-    <p>Enjoy the Games</p>
-    <a href="#" class="btn">Join With Us</a>
-    <div class="game-images">
-      <img src="game1-placeholder.jpg" alt="Game 1">
-      <img src="game2-placeholder.jpg" alt="Game 2">
-      <img src="game3-placeholder.jpg" alt="Game 3">
-    </div>
-  </div>
+    <!-- Main Content Section -->
+    <main>
+        <section id="about" class="about_section">
+            <h2>About Us</h2>
+            <p>Game Bunk is a space where you can get online free-to-play games that you can run on your school PC without any issues.</p>
+        </section>
+
+        <section id="games" class="games_section">
+            <h2>Games</h2>
+            <ul>
+                <li><strong><a href="https://1v1.lol" target="_blank">1v1.LOL</a></strong> - A battle royale and building game similar to Fortnite.</li>
+                <li><strong><a href="https://paper-io.com" target="_blank">Paper.io 2</a></strong> - Conquer the most territory by drawing lines on the map.</li>
+                <li><strong><a href="https://surviv.io" target="_blank">Surviv.io</a></strong> - A 2D battle royale game.</li>
+                <li><strong><a href="https://haxball.com" target="_blank">HaxBall</a></strong> - A fun multiplayer soccer game.</li>
+                <li><strong><a href="https://wormszone.com" target="_blank">Worms Zone</a></strong> - A colorful multiplayer snake game.</li>
+                <li><strong><a href="https://miniroyale.io" target="_blank">MiniRoyale.io</a></strong> - A fast-paced FPS battle royale game.</li>
+                <li><strong><a href="https://mope.io" target="_blank">Mope.io</a></strong> - Survive and evolve as different animals in a multiplayer world.</li>
+                <li><strong><a href="https://skribbl.io" target="_blank">Skribbl.io</a></strong> - A fun multiplayer drawing and guessing game.</li>
+                <li><strong><a href="https://bonk.io" target="_blank">Bonk.io</a></strong> - A physics-based multiplayer platformer game.</li>
+                <li><strong><a href="https://diep.io" target="_blank">Diep.io</a></strong> - Upgrade your tank and battle others in this multiplayer arena game.</li>
+                <li><strong><a href="https://flyordie.io" target="_blank">FlyOrDie.io</a></strong> - Evolve and survive as various flying creatures.</li>
+                <li><strong><a href="https://hole-io.com" target="_blank">Hole.io</a></strong> - Compete to become the largest black hole in the city.</li>
+                <li><strong><a href="https://venge.io" target="_blank">Venge.io</a></strong> - A fast-paced multiplayer FPS game with unique weapons.</li>
+                <li><strong><a href="https://wings.io" target="_blank">Wings.io</a></strong> - Fly planes and shoot down opponents in this aerial multiplayer game.</li>
+                <li><strong><a href="https://pixelwarfare.io" target="_blank">Pixel Warfare</a></strong> - A block-style first-person shooter.</li>
+                <li><strong><a href="https://starblast.io" target="_blank">Starblast.io</a></strong> - A multiplayer space shooter game.</li>
+                <li><strong><a href="https://doodlejump.org" target="_blank">Doodle Jump Online</a></strong> - Play the classic jumping game online.</li>
+                <li><strong><a href="https://sideswipe.rocketleague.com" target="_blank">Rocket League Sideswipe</a></strong> - A 2D version of Rocket League for online play.</li>
+                <li><strong><a href="https://superhex.io" target="_blank">Superhex.io</a></strong> - Capture hexagonal territory in a multiplayer battle.</li>
+                <li><strong><a href="https://tanktrouble.com" target="_blank">Tank Trouble</a></strong> - A simple yet fun multiplayer tank battle game.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Tawk.to Script -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/673e34de4304e3196ae5cce3/1id5ft25j';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
 </body>
-
 </html>
